@@ -1,9 +1,8 @@
-from conf import BLACK, WHITE, screen, PhyDelay, font, score, scoreX, scoreY, Lfont, sWidth, sHeight, overScore
+from conf import BLACK, WHITE, screen, PhyDelay, font, score, scoreX, scoreY, Lfont, sWidth, sHeight, overScore, settingPage
 from ball import moveBall, set as setBall
 from rect import moveRect, reset
 import pygame as pg
 import sys
-pg.init()
 
 def rectKey():
 	keys = pg.key.get_pressed()
@@ -35,11 +34,27 @@ def anyKey():
 				return
 		pg.time.delay(PhyDelay)
 
+def menu():
+	pg.display.update()
+	while True:
+		for event in pg.event.get():
+			if event.type == pg.KEYDOWN:
+        if event.type == pg ~~~
+        elif
+        else
+          return
+  settingPage = True
+		pg.time.delay(PhyDelay)
+
 screen.fill(BLACK)
 screen.blit(Lfont.render("PLAY PONG", True, WHITE, BLACK), (sWidth*11//64, sHeight*3//8))
 screen.blit(font.render("Press any key...", True, WHITE, BLACK), (sWidth*5//16, sHeight*5//8))
+menu()
 anyKey()
 setBall()
+
+while settingPage:
+  screen.fill(BLACK)
 
 while True:
 	screen.fill(BLACK)
