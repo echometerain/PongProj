@@ -1,3 +1,9 @@
+############################
+# Filename: conf.py
+# Desc: Global configuration
+# Date created: 04/02/2022
+############################
+
 import pygame as pg
 
 RED = 255,0,0
@@ -42,3 +48,10 @@ pg.mixer.music.load("Parking Lot.ogg")
 pg.mixer.music.play(-1)
 
 settingPage = False
+gamePage = True
+
+menuRect1W = sHeight/1
+menuRect1H = sWidth/2
+menuRect1X = sHeight/20
+menuRect1Y = sWidth/4
+outline = 1

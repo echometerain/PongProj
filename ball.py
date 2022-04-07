@@ -1,4 +1,11 @@
+############################
+# Filename: ball.py
+# Desc: Ball movement and collision implementation
+# Date created: 04/03/2022
+############################
+
 from conf import sWidth, sHeight, BSpeed, screen, Bcolor, BallR, BallOL, PhyDelay, Rwide, Rhigh, RectX, RectY, score
+from gun import X as gunX, Y as gunY
 import pygame as pg
 import random
 import time
@@ -11,9 +18,9 @@ def moveBall(speed):
 	global moveX
 	global moveY
 	global dead
+	ball = pg.Circle()
 	def draw():
 		pg.draw.circle(screen, Bcolor, (X, Y), BallR, BallOL)
-	
 	if time.time()-dead < 3:
 		draw()
 		return
@@ -35,6 +42,8 @@ def moveBall(speed):
 			Y = sHeight - BallR
 		elif Y < BallR:
 			Y = BallR
+		moveY = random.uniform(-moveY*5/4, -moveY*7/8)
+	if ball.rect.colliderect(paddle1)
 		moveY = random.uniform(-moveY*5/4, -moveY*7/8)
 	X += (moveX*speed) * PhyDelay
 	Y += (moveY*speed) * PhyDelay

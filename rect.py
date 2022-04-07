@@ -1,3 +1,9 @@
+############################
+# Filename: rect.py
+# Desc: Paddle movement implementation
+# Date created: 04/03/2022
+############################
+
 from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y
 import pygame as pg
 
