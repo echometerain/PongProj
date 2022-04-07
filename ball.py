@@ -18,7 +18,7 @@ def moveBall(speed):
 	global moveX
 	global moveY
 	global dead
-	ball = pg.Circle()
+
 	def draw():
 		pg.draw.circle(screen, Bcolor, (X, Y), BallR, BallOL)
 	if time.time()-dead < 3:
@@ -43,7 +43,7 @@ def moveBall(speed):
 		elif Y < BallR:
 			Y = BallR
 		moveY = random.uniform(-moveY*5/4, -moveY*7/8)
-	if ball.rect.colliderect(paddle1)
+	if gunX > X - BallR and gunX < X + BallR and gunY > Y - BallR and gunY > Y + ballR:
 		moveY = random.uniform(-moveY*5/4, -moveY*7/8)
 	X += (moveX*speed) * PhyDelay
 	Y += (moveY*speed) * PhyDelay
