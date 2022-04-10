@@ -12,8 +12,8 @@ WHITE = 255,255,255
 BLACK = 0,0,0
 BLUE = 130, 238, 253
 
-sWidth = 400
-sHeight = 300
+sWidth = 1280
+sHeight = 720
 
 pg.init()
 screen = pg.display.set_mode((sWidth,sHeight))
@@ -35,7 +35,7 @@ RectY = [sHeight/2 - Rwide/2, sHeight/2 - Rwide/2]
 
 Bcolor = RED		# ball colorRcolor = WHITE
 Rcolor = WHITE		# rect color
-PhyDelay = 40		# physics delay (game speed)
+PhyDelay = 20		# physics delay (game speed)
 score = [0,0]
 
 scoreSize = sWidth//20				# score font size
