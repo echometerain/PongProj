@@ -9,6 +9,7 @@ import pygame as pg
 RED = 255,0,0
 WHITE = 255,255,255
 BLACK = 0,0,0
+BLUE = 130, 238, 253
 
 sWidth = 400
 sHeight = 300
@@ -41,6 +42,11 @@ scoreX = [sWidth/4, sWidth*3/4]		# scoreboard x position
 scoreY = sHeight/8					# scoreboard y
 overScore = 7						# max score
 
+Glong = sWidth/40
+Ghigh = sHeight/40
+Gspeed = sWidth/4000
+Gcolor = RED
+
 font = pg.font.Font('font.ttf', scoreSize)
 Lfont = pg.font.Font('font.ttf', scoreSize*3)
 
@@ -50,8 +56,18 @@ pg.mixer.music.play(-1)
 settingPage = False
 gamePage = True
 
-menuRect1W = sHeight/1
-menuRect1H = sWidth/2
-menuRect1X = sHeight/20
+menuRect1W = sWidth/2
+menuRect1H = sHeight/3
+menuRect1X = sHeight/16
 menuRect1Y = sWidth/4
-outline = 1
+outline = 0
+rectColour = WHITE
+settingPageFontSize = sHeight/6
+menuRect2X = sWidth/16
+menuRect2Y = sHeight/4
+leftRectX = sWidth/32
+bottomRectY = sHeight - sHeight/8
+bottomRect2Y = sHeight - sHeight/4 - sHeight/16
+bottomRect3Y = sHeight - sHeight/2
+settingPageFontSize = sHeight/6
+settingFont = pg.font.SysFont("CROCHET PATTERN", 60)

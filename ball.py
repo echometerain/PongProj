@@ -1,16 +1,27 @@
 ############################
 # Filename: ball.py
-# Desc: Ball movement and collision implementation
+# Desc: Ball, laser movement and collision implementation
 # Date created: 04/03/2022
 ############################
 
 from conf import sWidth, sHeight, BSpeed, screen, Bcolor, BallR, BallOL, PhyDelay, Rwide, Rhigh, RectX, RectY, score
-from gun import X as gunX, Y as gunY
 import pygame as pg
+from rect import reset
 import random
 import time
 
 set()
+
+def touchRect(tmpX, tmpY):
+	if (tmpX<RectX[0]+Rhigh+BallR and tmpX>RectX[0]-BallR and tmpY>RectY[0] and tmpY<RectY[0]+Rwide and moveX<0) \
+	or (tmpX>RectX[1]-BallR and tmpX<RectX[1]+Rhigh+BallR and tmpY>RectY[1] and tmpY<RectY[1]+Rwide and moveX>0):
+		return True
+	return False
+
+def touchBall(tmpX, tmpY):
+	if BallR*BallR >= (X-tmpX)*(X-tmpX) + (Y-tmpY)*(Y-tmpY):
+		return True
+	return False
 
 def moveBall(speed):
 	global X
@@ -30,8 +41,7 @@ def moveBall(speed):
 	if X < -BallR:
 		score[1]+=1
 		set()
-	elif (X<RectX[0]+Rhigh+BallR and X>RectX[0]-BallR and Y>RectY[0] and Y<RectY[0]+Rwide and moveX<0) \
-	or (X>RectX[1]-BallR and X<RectX[1]+Rhigh+BallR and Y>RectY[1] and Y<RectY[1]+Rwide and moveX>0):
+	elif touchRect(X, Y):
 		if X<RectX[0]+Rhigh+BallR:
 			X = RectX[0]+Rhigh+BallR
 		elif X>RectX[1]-BallR:
@@ -42,8 +52,6 @@ def moveBall(speed):
 			Y = sHeight - BallR
 		elif Y < BallR:
 			Y = BallR
-		moveY = random.uniform(-moveY*5/4, -moveY*7/8)
-	if gunX > X - BallR and gunX < X + BallR and gunY > Y - BallR and gunY > Y + ballR:
 		moveY = random.uniform(-moveY*5/4, -moveY*7/8)
 	X += (moveX*speed) * PhyDelay
 	Y += (moveY*speed) * PhyDelay
@@ -61,3 +69,5 @@ def set():
 	X=sWidth/2
 	Y=sHeight/2
 	dead = time.time()
+	reset()
+	
