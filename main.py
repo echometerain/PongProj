@@ -4,15 +4,17 @@
 # Date created: 03/31/2022
 ############################
 
-from conf import BLACK, WHITE, screen, PhyDelay, font, score, scoreX, scoreY, Lfont, sWidth, sHeight, overScore, settingPage, gamePage, Rwide, RectX, RectY
+from conf import BLACK, WHITE, RED, screen, PhyDelay, font, score, scoreX, scoreY, Lfont, sWidth, sHeight, overScore, settingPage, gamePage, Rwide, RectX, RectY
 from settings import settings
 from ball import moveBall, set as setBall
-from rect import moveRect, reset
+from rect import moveRect, reset, draw
 from gun import delta, gun, addGun
 import pygame as pg
 import sys
 import time
 
+R1color = WHITE
+R2color = WHITE
 guntime = time.time()
 
 def Key():
@@ -63,8 +65,15 @@ setBall()
 
 while True: 
 	while settingPage:
-		next()
+		#next()
 		settings()
+		keys = pg.key.get_pressed()
+		if keys[pg.K_l]:
+			Rcolor = RED
+			draw()
+			gamePage = True
+			settingPage = False
+			
 	while gamePage:
 		score0 = font.render(str(score[0]), True, WHITE, BLACK)
 		score1 = font.render(str(score[1]), True, WHITE, BLACK)

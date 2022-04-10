@@ -5,6 +5,7 @@
 ############################
 
 import pygame as pg
+from settings import R1color, R2color
 
 RED = 255,0,0
 WHITE = 255,255,255
@@ -71,3 +72,5 @@ bottomRect2Y = sHeight - sHeight/4 - sHeight/16
 bottomRect3Y = sHeight - sHeight/2
 settingPageFontSize = sHeight/6
 settingFont = pg.font.SysFont("CROCHET PATTERN", 60)
+
+R1color

@@ -4,21 +4,24 @@
 # Date created: 04/03/2022
 ############################
 
-from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y
+from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y, RED
+from settings import R1color, R2color
 import pygame as pg
 
 move = [RSpeed, RSpeed]
 
-def moveRect(id, dir):
-	global move
-	
-	def draw():
-		pg.draw.rect(screen, Rcolor, (X[0],Y[0], Rhigh,Rwide), RectOL)
-		pg.draw.rect(screen, Rcolor, (X[1],Y[1], Rhigh,Rwide), RectOL)
+def draw():
+	pg.draw.rect(screen, R1color, (X[0],Y[0], Rhigh,Rwide), RectOL)
+	pg.draw.rect(screen, R2color, (X[1],Y[1], Rhigh,Rwide), RectOL)
 	if dir == "u" and Y[id] > 0:
 		Y[id] -= move[id] * PhyDelay
 	elif dir == "d" and Y[id] < sHeight-Rwide:
 		Y[id] += move[id] * PhyDelay
+	print("draw()", R1color, R2color)
+
+def moveRect(id, dir):
+	global move
+	
 	draw()
 
 def reset():
