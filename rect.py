@@ -4,14 +4,13 @@
 # Date created: 04/03/2022
 ############################
 
-from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y
+from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y, RED
 import pygame as pg
 
 move = [RSpeed, RSpeed]
 
 def moveRect(id, dir):
 	global move
-	
 	def draw():
 		pg.draw.rect(screen, Rcolor, (X[0],Y[0], Rhigh,Rwide), RectOL)
 		pg.draw.rect(screen, Rcolor, (X[1],Y[1], Rhigh,Rwide), RectOL)

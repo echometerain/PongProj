@@ -6,17 +6,19 @@
 
 from conf import BLACK, WHITE, screen, PhyDelay, font, score, scoreX, scoreY, Lfont, sWidth, sHeight, overScore, settingPage, gamePage, Rwide, RectX, RectY
 from settings import settings
-from ball import moveBall, set as setBall
+from ball import moveBall, set as setBall, isdead
 from rect import moveRect, reset
-from gun import delta, gun, addGun
+from gun import delta, gun, addGun, clear
 import pygame as pg
 import sys
 import time
 
-guntime = time.time()
+gtime0 = time.time()
+gtime1 = time.time()
 
 def Key():
-	global guntime
+	global gtime0
+	global gtime1
 	keys = pg.key.get_pressed()
 	if not (keys[pg.K_s] and keys[pg.K_w]):
 		if keys[pg.K_w]:
@@ -28,13 +30,13 @@ def Key():
 			moveRect(1, "d")
 		elif keys[pg.K_UP]:
 			moveRect(1, "u")
-	if time.time()-guntime > 2:
-		if keys[pg.K_d]:
+	if not isdead():
+		if keys[pg.K_d] and time.time()-gtime0 > 2 :
 			addGun(gun(RectX[0], RectY[0]+Rwide/2, 0))
-			guntime = time.time()
-		if keys[pg.K_LEFT]:
+			gtime0 = time.time()
+		if keys[pg.K_LEFT] and time.time()-gtime1 > 2:
 			addGun(gun(RectX[1], RectY[1]+Rwide/2, 1))
-			guntime = time.time()
+			gtime1 = time.time()
 def next():
 	pg.display.update()
 	for event in pg.event.get():
@@ -78,6 +80,7 @@ while True:
 			next()
 			reset()
 			setBall()
+			clear()
 			continue
 	
 		Key()

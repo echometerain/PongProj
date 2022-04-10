@@ -12,9 +12,18 @@ import time
 
 set()
 
-def touchRect(tmpX, tmpY):
-	if (tmpX<RectX[0]+Rhigh+BallR and tmpX>RectX[0]-BallR and tmpY>RectY[0] and tmpY<RectY[0]+Rwide and moveX<0) \
-	or (tmpX>RectX[1]-BallR and tmpX<RectX[1]+Rhigh+BallR and tmpY>RectY[1] and tmpY<RectY[1]+Rwide and moveX>0):
+def isdead():
+	if time.time()-dead < 3:
+		return True
+	return False
+
+def touchRect0(tmpX, tmpY):
+	if (tmpX<RectX[0]+Rhigh+BallR and tmpX>RectX[0]-BallR and tmpY>RectY[0] and tmpY<RectY[0]+Rwide):
+		print("first")
+		return True
+	return False
+def touchRect1(tmpX, tmpY):
+	if (tmpX>RectX[1]-BallR and tmpX<RectX[1]+Rhigh+BallR and tmpY>RectY[1] and tmpY<RectY[1]+Rwide):
 		return True
 	return False
 
@@ -32,7 +41,7 @@ def moveBall(speed):
 
 	def draw():
 		pg.draw.circle(screen, Bcolor, (X, Y), BallR, BallOL)
-	if time.time()-dead < 3:
+	if isdead():
 		draw()
 		return
 	if X > sWidth+BallR:
@@ -41,11 +50,11 @@ def moveBall(speed):
 	if X < -BallR:
 		score[1]+=1
 		set()
-	elif touchRect(X, Y):
-		if X<RectX[0]+Rhigh+BallR:
-			X = RectX[0]+Rhigh+BallR
-		elif X>RectX[1]-BallR:
-			X = RectX[1]-BallR
+	elif touchRect0(X, Y):
+		X = RectX[0]+Rhigh+BallR
+		moveX = random.uniform(-moveX*5/4, -moveX*7/8)
+	elif touchRect1(X, Y):
+		X = RectX[1]-BallR
 		moveX = random.uniform(-moveX*5/4, -moveX*7/8)
 	if Y > sHeight - BallR or Y < BallR:
 		if Y > sHeight - BallR:
