@@ -4,10 +4,16 @@
 # Date created: 04/03/2022
 ############################
 
+<<<<<<< HEAD
 from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y, RED
 <<<<<<< HEAD
 from settings import R1color, R2color
 =======
+>>>>>>> 1d8cdcb2d1b1cef2c06aaf18495197b1f860fa05
+||||||| 27f5486
+from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y
+=======
+from conf import RectOL, RSpeed, Rcolor, screen, sHeight, PhyDelay, Rhigh, Rwide, RectX as X, RectY as Y, RED
 >>>>>>> 1d8cdcb2d1b1cef2c06aaf18495197b1f860fa05
 import pygame as pg
 

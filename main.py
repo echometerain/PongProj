@@ -7,8 +7,18 @@
 from conf import BLACK, WHITE, RED, screen, PhyDelay, font, score, scoreX, scoreY, Lfont, sWidth, sHeight, overScore, settingPage, gamePage, Rwide, RectX, RectY
 from settings import settings
 <<<<<<< HEAD
+<<<<<<< HEAD
 from ball import moveBall, set as setBall
 from rect import moveRect, reset, draw
+from gun import delta, gun, addGun
+=======
+from ball import moveBall, set as setBall, isdead
+from rect import moveRect, reset
+from gun import delta, gun, addGun, clear
+>>>>>>> 1d8cdcb2d1b1cef2c06aaf18495197b1f860fa05
+||||||| 27f5486
+from ball import moveBall, set as setBall
+from rect import moveRect, reset
 from gun import delta, gun, addGun
 =======
 from ball import moveBall, set as setBall, isdead
@@ -20,8 +30,15 @@ import sys
 import time
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 R1color = WHITE
 R2color = WHITE
+guntime = time.time()
+=======
+gtime0 = time.time()
+gtime1 = time.time()
+>>>>>>> 1d8cdcb2d1b1cef2c06aaf18495197b1f860fa05
+||||||| 27f5486
 guntime = time.time()
 =======
 gtime0 = time.time()
