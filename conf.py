@@ -11,8 +11,8 @@ WHITE = 255,255,255
 BLACK = 0,0,0
 BLUE = 130, 238, 253
 
-sWidth = 400 # screen width and height
-sHeight = 300
+sWidth = 1280 # screen width and height
+sHeight = 720
 
 pg.init() # starts pygame and functions
 screen = pg.display.set_mode((sWidth,sHeight))
@@ -31,9 +31,10 @@ Rhigh = sWidth/40		# rect height
 RectX = [sWidth/8, sWidth*7/8]		# rect start x
 RectY = [sHeight/2 - Rwide/2, sHeight/2 - Rwide/2]
 # rect start y
-FPS = 25
-difficulty = 4			# lower = more difficult
-BInc = 1/difficulty		# ball percent increase
+FPS = 45
+difficulty = [0]
+difficulty[0] = 3			# lower = more difficult
+BInc = 1/difficulty[0]		# ball percent increase
 
 Bcolor = RED		# ball colorRcolor = WHITE
 Rcolor = [WHITE, WHITE]		# rect colors
@@ -43,12 +44,12 @@ score = [0,0]
 scoreSize = sWidth//20				# score font size
 scoreX = [sWidth/4, sWidth*3/4]		# scoreboard x position
 scoreY = sHeight/8					# scoreboard y
-overScore = 7						# max score
+overScore = 5						# max score
 
 # gun section
 Glong = sWidth/40					# bullet length
 Ghigh = sHeight/40					# bullet height
-Gspeed = sWidth/2000				# bullet speed
+Gspeed = sWidth/400					# bullet speed
 Gcolor = RED						# bullet color
 deadTime = 2
 
