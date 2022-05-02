@@ -39,7 +39,7 @@ def Key(): # handles key strokes
 		if keys[pg.K_LEFT] and time.time()-gtime1 > 2:
 			addGun(gun(RectX[1], RectY[1]+Rwide/2, 1))
 			gtime1 = time.time()
-def next(): # updates frame
+def next(over): # updates frame
 	pg.display.update()
 	for event in pg.event.get():
 		if event.type == pg.QUIT:
@@ -48,7 +48,10 @@ def next(): # updates frame
 			exit(0)
 	pg.event.clear()
 	pg.time.delay(PhyDelay)
-	screen.fill(BLACK)
+	if over:
+		screen.blit(Lfont.render("GAME OVER", True, WHITE, BLACK), (sWidth*11//64, sHeight*3//8))
+	else:
+		screen.fill(BLACK)
 
 def anyKey(): # press any key to continue
 	pg.display.update()
@@ -82,11 +85,11 @@ while True:
 		screen.blit(score0, (scoreX[0], scoreY))
 		screen.blit(score1, (scoreX[1], scoreY))
 		if score[0] >= overScore or score[1] >= overScore: # handle game over
-			screen.blit(Lfont.render("GAME OVER", True, WHITE, BLACK), (sWidth*11//64, sHeight*3//8))
+			next(True)
 			anyKey()
 			score[0] = 0
 			score[1] = 0
-			next()
+			next(False)
 			reset()
 			setBall()
 			clear()
@@ -96,7 +99,7 @@ while True:
 		moveRect(0, "N/A")
 		moveBall(1)
 		delta()
-		next()
+		next(False)
 		keys = pg.key.get_pressed() #checks to see if any keys are pressed
 		if keys[pg.K_h]: #happens if the 'h' key is pressed
 			gamePage = False #makes the gamePage False
